@@ -8,20 +8,26 @@ pipeline{
 
         //clean du workspace
         stage('Clean workspace'){
-            sh "rm -rf *"
+            steps{
+                sh "rm -rf *"
+            }
         }
 
         //checkout du projet
         stage('Checkout'){
-            git branch:${gitParams.branche}, url:${gitParams.url}
+            steps{
+                git branch:${gitParams.branche}, url:${gitParams.url}
+            }
         }
 
         //build maven
         stage('build'){
-            def mvnImage = "maven:3.3-jdk-8-alpine"
-            def workspace = pwd()
+            steps{
+                def mvnImage = "maven:3.3-jdk-8-alpine"
+                def workspace = pwd()
 
-            sh "docker run -it -d --rm -v ${workspace}:/app -w /app mvn clean install"
+                sh "docker run -it -d --rm -v ${workspace}:/app -w /app mvn clean install"
+            }
         }
     }
 }
