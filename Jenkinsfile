@@ -1,3 +1,5 @@
+#!groovy
+/*
 pipeline{
 
     agent any
@@ -29,5 +31,18 @@ pipeline{
                 sh "docker run -it -d --rm -v ${workspace}:/app -w /app mvn clean install"
             }
         }
+    }
+
+    post{
+        always{
+
+        }
+    }
+}
+*/
+
+node {
+    stage('compile') {
+        echo "yes!!!"
     }
 }
