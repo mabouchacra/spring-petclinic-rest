@@ -40,9 +40,9 @@ pipeline{
     }
 }
 */
-
+def toto = "tata"
 node {
     stage('compile') {
-        echo "yes!!!"
+        echo "yes!!! ${toto}"
     }
 }
