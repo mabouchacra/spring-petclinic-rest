@@ -6,26 +6,20 @@ node{
 
     //clean du workspace
     stage('Clean workspace'){
-        steps{
-            sh "rm -rf *"
-        }
+        sh "rm -rf *"
     }
 
     //checkout du projet
     stage('Checkout'){
-        steps{
-            git branch:${gitParams.branche}, url:${gitParams.url}
-        }
+        git branch:${gitParams.branche}, url:${gitParams.url}
     }
 
     //build maven
     stage('build'){
-        steps{
-            def mvnImage = "maven:3.3-jdk-8-alpine"
-            def workspace = pwd()
+        def mvnImage = "maven:3.3-jdk-8-alpine"
+        def workspace = pwd()
 
-            sh "docker run -it -d --rm -v ${workspace}:/app -w /app mvn clean install"
-        }
+        sh "docker run -it -d --rm -v ${workspace}:/app -w /app mvn clean install"
     }
 
 }
