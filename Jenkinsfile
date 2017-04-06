@@ -2,9 +2,9 @@ pipeline{
 
     agent any
 
+    def gitParams = [url:"https://github.com/mabouchacra/spring-petclinic-rest.git", branche:"training"]
     stages{
 
-        def gitParams = [url:"https://github.com/mabouchacra/spring-petclinic-rest.git", branche:"training"]
 
         //clean du workspace
         stage('Clean workspace'){
