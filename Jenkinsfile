@@ -11,7 +11,8 @@ node{
 
     //checkout du projet
     stage('Checkout'){
-        git branch:gitParams.branche, url:gitParams.url
+        //git branch:gitParams.branche, url:gitParams.url
+        checkout scm
     }
 
     //build maven
